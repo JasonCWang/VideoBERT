@@ -4,7 +4,15 @@ import os.path
 import argparse
 import pathlib
 
+'''
+    Need to set the appropriate GPU name here that we want to use for the batch_extract process
 
+    For GPUs, these names take the form:
+    
+        '/device:GPU:##'
+
+    Where ## is a 0-based index number from the GPU's available.
+'''
 device_name = tf.test.gpu_device_name()
 print("device name:", device_name)
 
