@@ -1,4 +1,6 @@
-from VideoBERT.I3D.extract_features import extract_features
+# from VideoBERT.I3D.extract_features import extract_features
+import extract_features
+from gpu_inform import select_gpu_from_available
 import tensorflow as tf
 import os.path
 import argparse
@@ -13,8 +15,6 @@ import pathlib
 
     Where ## is a 0-based index number from the GPU's available.
 '''
-device_name = tf.test.gpu_device_name()
-print("device name:", device_name)
 
 parser = argparse.ArgumentParser()
 
@@ -23,6 +23,10 @@ parser.add_argument('-r', '--root-video-path', type=str, required=True, help='ro
 parser.add_argument('-s', '--features-save-path', type=str, required=True, help='directory in which to save features')
 parser.add_argument('-i', '--imgs-save-path', type=str, required=True, help='directory in which to save images')
 args = parser.parse_args()
+
+tf.debugging.set_log_device_placement(True)
+device_name = select_gpu_from_available()
+print("device name:", device_name)
 
 video_file_list_path = args.file_list_path
 video_root_path = args.root_video_path
