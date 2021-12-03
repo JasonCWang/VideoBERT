@@ -6,7 +6,8 @@ import tensorflow as tf
 import torch, torchvision
 from torchvision.utils import save_image
 
-
+# Uncomment the debugging line below to confirm which GPU is being used
+tf.debugging.set_log_device_placement(True)
 batch_count = 20
 clip_frame_count = 15
 im_size = 224
