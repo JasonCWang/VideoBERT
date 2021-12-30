@@ -9,8 +9,9 @@ import os
 import numpy as np
 import pdb
 
-TOP_CENTROID_DIR = '/home/mkc5372/hkmeans_outputs/centroids'
-AVG_CENTOIRD_DIR = '/home/mkc5372/hkmeans_outputs/avg_centroids'
+
+TOP_CENTROID_DIR = '/home/mike/videobert_step3/step3_centroids'
+AVG_CENTOIRD_DIR = '/home/mike/videobert_step3/step3_average_centroids'
 
 
 if __name__ == '__main__':
