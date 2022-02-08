@@ -19,7 +19,8 @@ if __name__ == '__main__':
         os.remove(CONCATENATED_CENTROID)
 
     # Now, create the file and append all average centroids to it
-    with open(CONCATENATED_CENTROID, 'wb') as f_handle:
         for root, dir, filenames in os.walk(CENTROID_DIR):
-            all_arrays = np.concatenate([np.load(CENTROID_DIR + os.path.sep + file) for file in filenames])
+            # This operation should be fine because our Average Centroids should all be (1, 600) shape
+            all_arrays = np.vstack([np.load(CENTROID_DIR + os.path.sep + file) for file in filenames])
+            # all_arrays = np.concatenate([np.load(CENTROID_DIR + os.path.sep + file) for file in filenames])
             np.save(f_handle, all_arrays)

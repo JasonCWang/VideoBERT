@@ -1,3 +1,5 @@
+import sys
+sys.path.append('/home/mike/VideoBERT')
 import argparse
 import json
 import os
@@ -7,6 +9,7 @@ import numpy as np
 import spacy
 import cv2
 from tqdm import tqdm
+from pdb import set_trace
 
 from VideoBERT.data.VideoBertDataset import VideoBertDataset
 from VideoBERT.train.custom_vid_transformer import VideoTransformer
@@ -110,7 +113,7 @@ def main(colab_args=None):
 
     # setup tokenizer and model
     tokenizer = torch.load(os.path.join(args.output_dir, "tokenizer.pt"))
-    eval_dataset = VideoBertDataset(tokenizer, build_tokenizer=False, data_path='eval_data.json')
+    eval_dataset = VideoBertDataset(tokenizer, build_tokenizer=False, data_path='/home/mike/videobert_step4/evaluation_data.json')
     data_globals.config.vocab_size = len(tokenizer.vocab.itos) + 20736
     print("total vocab size of", len(tokenizer.vocab.itos) + 20736)
 
@@ -120,11 +123,13 @@ def main(colab_args=None):
 
     model.to(args.device)
 
+    set_trace();
+
     for i in tqdm(range(args.example_id, args.example_id+10000, 100)):
         try:
             out_vid_tokens = video_next_tok_pred(args, model, tokenizer, eval_dataset[i][3])
 
-            centroid_map = json.load(open('centroid_to_img.json', 'r'))
+            centroid_map = json.load(open('/home/mike/videobert_step3/centroid_image_dict.json', 'r'))
             centroid_imgs = np.concatenate([cv2.imread(centroid_map[str(centroid-len(tokenizer.vocab))]) for centroid in out_vid_tokens[1:-1]][:5], axis=0)
             cv2.imwrite('gen_vids/out-vid-{}.jpg'.format(i), centroid_imgs)
         except Exception as e:

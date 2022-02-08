@@ -1,3 +1,7 @@
+import sys
+sys.path.append('/home/mike/VideoBERT')
+sys.stdout = open('/home/mike/videobert_step5/logs/stdout_output1.txt', 'w')
+
 from VideoBERT.evaluation.eval import evaluate
 from VideoBERT.train.custom_vid_transformer import VideoTransformer
 from VideoBERT.data.VideoBertDataset import VideoBertDataset
@@ -410,6 +414,8 @@ def main(colab_args=None):
             type=int,
             help="If > 0: set total number of training steps to perform. Override num_train_epochs.",
         )
+
+        # NOTE: Place in our own location to put these.
         parser.add_argument("--log_dir", default=".", type=str, help="Directory to store the logs.")
         parser.add_argument("--warmup_steps", default=0, type=int, help="Linear warmup over warmup_steps.")
         parser.add_argument("--local_rank", type=int, default=-1, help="For distributed training: local_rank")
@@ -459,6 +465,7 @@ def main(colab_args=None):
         format="%(asctime)s - %(levelname)s - %(name)s -   %(message)s",
         datefmt="%m/%d/%Y %H:%M:%S",
         level=logging.INFO if args.local_rank in [-1, 0] else logging.WARN,
+        filename=args.log_dir + '/output1.log'
     )
 
     # Set seed
@@ -517,6 +524,9 @@ def main(colab_args=None):
     model.train()
     global_step, tr_loss = train(args, model, train_dataset, eval_dataset)
     logger.info(" global_step = %s, average loss = %s", global_step, tr_loss)
+
+    # Close stdout :)
+    sys.stdout.close()
 
 
 if __name__ == "__main__":

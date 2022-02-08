@@ -3,6 +3,7 @@ import os
 from tqdm import tqdm
 from punctuator import Punctuator
 import argparse
+import pdb
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-c', '--captions-path', type=str, required=True,
@@ -27,6 +28,7 @@ vid_ids = os.listdir(args.root_features)
 
 start = 0
 if os.path.exists(save_path):
+    # pdb.set_trace()
     train_data = json.load(open(save_path))
     print('starting from vid id', len(train_data))
     start = len(train_data)

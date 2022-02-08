@@ -10,7 +10,8 @@ import numpy as np
 import pdb
 
 
-TOP_CENTROID_DIR = '/home/mike/videobert_step3/step3_centroids'
+# TOP_CENTROID_DIR = '/home/mike/videobert_step3/step3_centroids'
+TOP_CENTROID_DIR = '/home/jasonw/step3_full/step3_centroids_full'
 AVG_CENTOIRD_DIR = '/home/mike/videobert_step3/step3_average_centroids'
 
 

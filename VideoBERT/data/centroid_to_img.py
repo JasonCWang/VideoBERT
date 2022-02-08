@@ -4,6 +4,7 @@ import argparse
 from tqdm import tqdm
 import os
 import json
+# import pdb
 
 parser = argparse.ArgumentParser()
 
@@ -51,6 +52,7 @@ def img_path_from_centroid(features, centroid, img_dir):
 for root, dirs, files in tqdm(os.walk(saved_features)):
     for name in files:
         path = os.path.join(root, name)
+        # pdb.set_trace()
         feature_list.append(np.load(path))
         feature_paths[counter] = path
         counter += 1
