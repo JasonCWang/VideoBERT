@@ -23,6 +23,8 @@ def main():
     save_dir = args.save_dir
     centroid_dir = args.centroid_dir
 
+    # This is where the default values of 4 and 12 are used according to the research paper.
+    # Future work should investigate whether 4 and 12 are actually appropriate values for our own data
     hkmeans(root, prefix, 4, 12, batch_size, 15, save_dir, 'vecs', centroid_dir)
 
 

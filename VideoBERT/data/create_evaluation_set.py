@@ -4,9 +4,10 @@ import json
 import os
 import pdb
 
-TRAINING_FILE_PATH = '/home/mike/videobert_step4/training_data.json'
-TRAINING_WO_EVAL = '/home/mike/videobert_step4/training_data_wo_eval.json'
-EVALUATION_FILE_PATH = '/home/mike/videobert_step4/evaluation_data.json'
+# For use with the new 'vb_step#' attempt
+TRAINING_FILE_PATH = '/home/mike/vb_step4/full_training_data.json'
+TRAINING_WO_EVAL = '/home/mike/vb_step4/short_training_data.json'
+EVALUATION_FILE_PATH = '/home/mike/vb_step4/evaluation_data.json'
 EVALUATION_PROPORTION = 0.2
 
 if __name__ == '__main__':
@@ -29,6 +30,5 @@ if __name__ == '__main__':
             eval[training_keys[counter]] = training_data[training_keys[counter]]
             training_after_eval.pop(training_keys[counter])
             counter += 1
-        # pdb.set_trace()
         json.dump(eval, f_handle)
         json.dump(training_after_eval, w_handle)
