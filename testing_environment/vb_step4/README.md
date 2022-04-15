@@ -36,7 +36,7 @@ Since the captions are provided to us with the HowTo100M dataset, they are not c
 
 Before doing this, however, we also need to punctuate the text, since the provided captions have no punctuation.
 
-For the punctuation task, I requested access to the PCL model from PyPi's punctuator module, which has been stored in the repository so you do not have to request access each time.
+For the punctuation task, I requested access to the PCL model from PyPi's punctuator module, which has been stored in the Google Drive so you do not have to request access each time.
 
 In our initial attempts at training, I used the **Demo-Europarl-EN.pcl** punctuator file.  Other punctuator models can be used to see if it impacts results.
 
