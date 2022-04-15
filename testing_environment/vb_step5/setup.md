@@ -81,3 +81,27 @@ This field is used in tandem with --should_continue in order to continue trainin
 > "Whether to continue from latest checkpoint in output_dir"
 
 This must be set in addition to the --model_name_or_path flag in order for the training to actually pick up from a checkpoint.
+
+## Using the Plot_loss.py Script
+
+This short python script was created in order to read the loss functions from the standard output of the training process, and graph them in simple matplotlib plots.
+
+In order to use this script, you needed to have redirected the stdout of `train.py` into a textfile. Refer to the above sections for instructions for how to do this.
+
+Then, you can use the `plot_loss.py` script to generate plots showing the loss values.
+
+1. Change the filepath in the with open() statement to point to the stdout file used for catching the output of `train.py`
+
+2. Feel free to update `num_benchmarks_to_read` in order to change the amount of benchmark values that are read from the file.  If you would like to read the entire file, you can comment out the last two lines of the 'with' statement as shown here:
+
+.
+
+    if num_benchmarks_taken == num_benchmarks_to_read:
+        break
+
+
+3. Then, the next code chunks are different plot configurations with different types of loss.  Use whichever plots are desired by uncommenting them and reassigning the `savefig()` parameters for each plot
+
+4. Run `plot_loss.py`
+
+After performing these steps, PNG loss plots will be saved to the device.
