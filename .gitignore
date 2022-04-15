@@ -5,3 +5,16 @@ stap3/.DS_Store
 stap4/.DS_Store
 stap5/.DS_Store
 stap6/.DS_Store
+
+# Testing environment files
+*.npy
+testing_environment/vb_step3/centroids/
+testing_environment/vb_step3/vectors/
+testing_environment/videobert_step5/logs/
+testing_environment/vb_step5/logs/
+*.json
+*.bin
+*.pt
+*.png
+*.log
+events.out.tfevents.*
